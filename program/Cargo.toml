@@ -1,0 +1,37 @@
+[package]
+name = "privacy-size-experiment"
+version = "0.1.0"
+edition = "2021"
+publish = false
+
+[lib]
+crate-type = ["cdylib"]
+
+[dependencies]
+groth16-solana = "=0.2.0"
+solana-program = "=2.2.1"
+solana-poseidon = "=2.2.0"
+spl-token = { version = "=7.0.0", features = ["no-entrypoint"] }
+
+[build-dependencies]
+num-bigint = "0.4"
+serde_json = "1"
+sha2 = "=0.10.9"
+
+[dev-dependencies]
+num-bigint = "0.4"
+serde_json = "1"
+
+[features]
+no-entrypoint = []
+canonical-fr = []
+custom-panic = []
+compact-system = []
+compact-token = []
+close-empty-state = []
+compact-state = []
+
+[profile.release]
+opt-level = "z"
+lto = true
+codegen-units = 1
